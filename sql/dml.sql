@@ -4,7 +4,7 @@ VALUES ('João Silva', 'joao@email.com', '1990-05-15', '11999999999');
 SELECT * FROM Clientes;
 
 UPDATE Clientes
-SET Telefone = '11988888888'
+SET Telefone = '11988888878'
 WHERE ClienteID = 1;
 
 DELETE FROM Clientes
