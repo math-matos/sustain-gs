@@ -6,6 +6,8 @@ CREATE TABLE EmpresasParceiras (
     EmpresaID INT AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
     AreaAtuacao VARCHAR(100),
+    CNPJ VARCHAR(18) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL,
     DataParceria DATE
 );
 
@@ -17,20 +19,13 @@ CREATE TABLE ProjetosEnergeticos (
     DataInicio DATE,
     DataConclusao DATE,
     EmpresaID INT,
-    FOREIGN KEY (EmpresaID) REFERENCES EmpresasParceiras(EmpresaID)
+    FOREIGN KEY (EmpresaID) REFERENCES EmpresasParceiras (EmpresaID)
 );
 
-CREATE TABLE ProjecoesSetor (
-    ProjecaoID INT AUTO_INCREMENT PRIMARY KEY,
-    TipoEnergia VARCHAR(50), -- Ex: Solar, Eólica
-    PercentualProjecao DECIMAL(5, 2),
-    AnoProjecao INT
-);
-
-CREATE TABLE ComunidadesImpactadas (
-    ComunidadeID INT AUTO_INCREMENT PRIMARY KEY,
-    NomeComunidade VARCHAR(100),
-    Localizacao VARCHAR(100),
-    ProjetoID INT,
-    FOREIGN KEY (ProjetoID) REFERENCES ProjetosEnergeticos(ProjetoID)
+CREATE TABLE Usuarios (
+    UsuarioID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL,
+    CPF VARCHAR(14) NOT NULL UNIQUE,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL
 );
